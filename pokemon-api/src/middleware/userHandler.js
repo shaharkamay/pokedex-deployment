@@ -6,7 +6,6 @@ module.exports.userHandler = (req, res, next) => {
     if(!username) {
         next({status: 401, message: "unauthenticated user request!"});
     } else {
-        res.send(path.resolve(path.join("./src/static-files/users", username)));
         const userPath = path.resolve(path.join("./src/static-files/users", username));
         if(!fs.existsSync(userPath)) fs.mkdirSync(userPath);
         req.username = username;
